@@ -229,7 +229,9 @@ class DebugNode(LifecycleNode):
         )
 
         # Rotate the corners of the rectangle
-        rect_pts = np.int0(cv2.transform(np.array([rect_pts]), rotation_matrix)[0])
+        rect_pts = cv2.transform(np.array([rect_pts]), rotation_matrix)[0].astype(
+            np.intp
+        )
 
         # Draw the rotated rectangle
         for i in range(4):
